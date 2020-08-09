@@ -40,14 +40,14 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false|
 ### Association
-- has_many :user
 - has_many :comments
+- has_many :users,  through:  :users_groups
 
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text||
-|image|text||
+|image|string||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 ### Association
