@@ -1,0 +1,22 @@
+.chat_main
+  .chat_main__group-info
+    .group_top__items
+      .group_top__name test
+      .group_top__member Member : masa
+    .group_top__edit Edit
+  .chat_main__message-list
+    .message_top__items
+      .message_top__name masa
+      .message_top__date today
+    .message_top__message おはよう!
+    .message_top__items
+      .message_top__name masa
+      .message_top__date today
+    .message_top__message 今日は夜から雨
+  .chat_main__message-form
+    .message_bottom__items
+      .message_bottom__message type a message
+      %label{class: "input-box__image",for: "message-image"}
+        = icon('fas','image')
+        %input{type: "file",class: 'Hidden',id: "message-image"}
+    .message_bottom__send Send
