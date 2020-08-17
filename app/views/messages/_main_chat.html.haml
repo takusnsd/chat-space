@@ -5,6 +5,7 @@
       .group_top__items-member Member : masa
     .group_top__edit Edit
   .chat_main__message-list
+    = render @messages
     .message_top__items
       .message_top__items-name masa
       .message_top__items-date today
@@ -14,9 +15,10 @@
       .message_top__items-date today
     .message_top__message 今日は夜から雨
   .chat_main__message-form
-    .message_bottom__items
-      .message_bottom__items-message type a message
-      %label{class: "input-box__image",for: "message-image"}
-        = icon('fas','image')
-        %input{type: "file",class: 'Hidden',id: "message-image"}
-    .message_bottom__send Send
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
+      .message_bottom__items
+        = f.text_field :content, class: 'message_bottom__items-message', placeholder: 'type a message'
+        = f.label :image, class: 'input-box__image' do
+          = icon('fas','image')
+          %input{type: "file",class: 'Hidden',id: "message-image"}
+    = f.submit 'Send', class: 'message_bottom__send'
