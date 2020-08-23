@@ -1,24 +1,30 @@
 .chat_main
   .chat_main__group-info
     .group_top__items
-      .group_top__items-name test
-      .group_top__items-member Member : masa
-    .group_top__edit Edit
+      .group_top__items-name
+        = @group.name
+      %ul.group_top__items-name-member 
+        Member:
+        %li.group_top__items-name-member_list
+        - @group.users.each do |user|
+          = user.name
+    = link_to edit_group_path (@group), class: "group_top__edit" do
+      Edit
   .chat_main__message-list
     = render @messages
     .message_top__items
-      .message_top__items-name masa
-      .message_top__items-date today
-    .message_top__message おはよう!
+      .message_top__items-name
+      .message_top__items-date
+    .message_top__message
     .message_top__items
-      .message_top__items-name masa
-      .message_top__items-date today
-    .message_top__message 今日は夜から雨
+      .message_top__items-name
+      .message_top__items-date
+    .message_top__message
   .chat_main__message-form
     = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
       .message_bottom__items
         = f.text_field :content, class: 'message_bottom__items-message', placeholder: 'type a message'
         = f.label :image, class: 'input-box__image' do
           = icon('fas','image')
-          %input{type: "file",class: 'Hidden',id: "message-image"}
-    = f.submit 'Send', class: 'message_bottom__send'
+      %input{type: "file",class: 'Hidden',id: "message-image"}
+      = f.submit 'Send', class: 'message_bottom__send'
