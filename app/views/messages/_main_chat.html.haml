@@ -25,6 +25,6 @@
       .message_bottom__items
         = f.text_field :content, class: 'message_bottom__items-message', placeholder: 'type a message'
         = f.label :image, class: 'input-box__image' do
-          = icon('fas','image')
-      %input{type: "file",class: 'Hidden',id: "message-image"}
+          = icon('fas', 'image')
+          = f.file_field :image, class: 'Hidden'
       = f.submit 'Send', class: 'message_bottom__send'
