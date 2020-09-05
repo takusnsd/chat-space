@@ -54,9 +54,9 @@ $(function(){
     })
     .done(function(data){
       let html = buildHTML(data);
-      $('.MessageField').append(html);      
+      $('.chat_main__message-list').append(html);      
       $('form')[0].reset();
-      $('.MessageField').animate({ scrollTop: $('.MessageField')[0]});
+      $('.chat_main__message-list').animate({ scrollTop: $('.chat_main__message-list')[0].scrollHeight});
       $('.Form__submit').prop("disabled", false);
     })
     .fail(function() {
